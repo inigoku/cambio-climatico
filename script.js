@@ -175,11 +175,16 @@ function draw() {
 
 async function main() {
     try {
-        const response = await fetch('heightmap.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        // Cargar mapa en fragmentos (para evitar límites de GitHub/Navegador)
+        const numChunks = 4;
+        const promises = [];
+        for (let i = 0; i < numChunks; i++) {
+            promises.push(fetch(`heightmap_part_${i}.json`).then(r => r.json()));
         }
-        heightmap = await response.json();
+        
+        const chunks = await Promise.all(promises);
+        heightmap = chunks.flat();
+        
         loadingDiv.style.display = 'none';
 
         // Set canvas size based on container
