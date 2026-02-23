@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Cambio Climático</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Simulador de Nivel del Mar</h1>
+    <div class="container">
+        <canvas id="mapCanvas"></canvas>
+        <div id="loading">Cargando mapa...</div>
+        <div class="controls">
+            <label for="seaLevelSlider">Nivel del mar: <span id="seaLevelLabel">0</span> m</label>
+            <input type="range" id="seaLevelSlider" min="-8000" max="8000" value="0" step="0.1">
+            <div class="buttons">
+                <button id="stepBackward"><<</button>
+                <button id="playPause">Play/Pause</button>
+                <button id="stepForward">>></button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
